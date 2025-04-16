@@ -19,6 +19,10 @@ import DestinationForm from "../Components/DestinationForm/DestinationForm";
 import NavDestinate from "../Pages/NavDestinate/NavDestinate";
 import PrivateRoutes from "./PrivateRoutes";
 import Pakages from "../Pages/Packages/Pakages";
+import DashboardLayout from "../Layout/dashboardLayout";
+import AddPackages from "../Pages/Dashboard/SuperAdmin/AddPackages/AddPackages";
+import AllPackages from "../Pages/Dashboard/SuperAdmin/allPackages/AllPackages";
+import SuperAdminDashboard from "../Pages/Dashboard/SuperAdmin/SuparAdminDashboard";
 
 export const router = createBrowserRouter([
     {
@@ -114,4 +118,22 @@ export const router = createBrowserRouter([
             
         ]
     },
+    {
+        path: "/dashboard",
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: '/dashboard/superadmin',
+                element: <SuperAdminDashboard></SuperAdminDashboard>,
+            },
+            {
+                path: '/dashboard/addPackages',
+                element: <AddPackages></AddPackages>,
+            },
+            {
+                path: '/dashboard/allPackages',
+                element: <AllPackages></AllPackages>,
+            },
+        ]
+    }
 ]);

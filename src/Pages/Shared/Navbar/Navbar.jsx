@@ -114,14 +114,14 @@ const Navbar = () => {
             <>
               {/* Display user's profile image and name */}
               <div className="flex space-x-2 mr-4">
-                <img
+                <Link to="/dashboard/superadmin"><img
                   src={user?.photoURL || "https://via.placeholder.com/40"} // fallback if no photoURL
                   alt="User Avatar"
                   className="w-10 h-10 rounded-full"
-                />
-                <span className="text-black md:text-lg max-sm:text-xs font-medium">{user?.displayName}</span>
+                /></Link>
+                
               </div>
-              <button onClick={handleLogOut} className="btn text-white bg-stone-500">Log Out</button>
+              <button onClick={handleLogOut} className="bg-orange-600 text-white py-2 px-3 rounded-lg">Log Out</button>
             </>
           ) : (
             <Link to="login">

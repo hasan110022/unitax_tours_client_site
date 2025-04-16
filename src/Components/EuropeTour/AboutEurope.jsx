@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import usePackages from '../../Hooks/usePackages';
 
 const AboutEurope = () => {
     const [showImage, setShowImage] = useState(false);
+    const [packages, isLoading, refetch] = usePackages()
 
     const handleClick = () => {
         setShowImage(!showImage);
@@ -10,7 +12,7 @@ const AboutEurope = () => {
     return (
         <div className='mt-5 my-6 max-sm:p-4 sm:px-6 lg:px-8'>
             <div className='flex max-sm:flex-col items-center'>
-                <div className='w-full md:w-full lg:max-w-[1000px] space-y-6 mx-auto'>
+                <div className='w-full md:w-[100%] lg:max-w-[1440px] space-y-6 mx-auto'>
                     <p className='font-bold text-lg sm:text-xl md:text-2xl'>PROMOTION</p>
                     <h1 className='font-bold text-3xl sm:text-4xl md:text-5xl mt-2'>
                         We Provide You Best <br /> Europe Sightseeing Tours
@@ -25,7 +27,6 @@ const AboutEurope = () => {
                         View Packages
                     </button>
                 </div>
-
                 {/* Show Image with animation */}
                 <div className={`transition-opacity duration-1000 ${showImage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                     {showImage && (

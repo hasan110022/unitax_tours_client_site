@@ -24,9 +24,10 @@ const Login = () => {
         }
         Swal.fire("Login With Google success..!");
         navigate('/');
-        axiosPublic.post(`/users/${res.user?.email}`, userData)
+        axiosPublic.post(`/users/${result.user?.email}`, userData)
           .then(res => {
-            navigate(from, { replace: true });
+            navigate('/');
+            // navigate(from, { replace: true });
           })
       })
       .catch(error => {
