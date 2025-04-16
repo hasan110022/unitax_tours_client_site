@@ -1,15 +1,23 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 import Footer from '../Pages/Shared/Footer/Footer';
 
 const MainLayout = () => {
+    const location = useLocation()
+    const path = location?.pathname == '/login' || '/register'
     
     return (
         <div className='max-w-[1900px]  mx-auto'>
-            <Navbar></Navbar>
+            {
+                path && <Navbar></Navbar>
+            }
+            
             <Outlet></Outlet>
-            <Footer></Footer>
+            {
+                path && <Footer></Footer>
+            }
+
         </div>
     );
 };

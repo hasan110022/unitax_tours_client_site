@@ -7,10 +7,12 @@ import lootieData from '../../assets/Animation - 1741274998425.json'
 import Lottie from 'lottie-react';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic()
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser,signInWithGoogle } = useContext(AuthContext);
 
 
 
@@ -26,21 +28,62 @@ const Register = () => {
         const password = form.password.value;
         const mobile = form.mobile.value;
         const photo = form.photo.value;
-        console.log(email, password, mobile, photo);
+        const userdata={email, password, mobile, photo}
 
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
-                Swal.fire({
-                    title: "Hurrahhh..!!Registar Succesfull.!",
-                    icon: "success",
-                    draggable: true
-                });
+                axiosPublic.post(`/users/${data?.email}`, userdata)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            title: "Registar Succesfull.!",
+                            icon: "success",
+                            draggable: true
+                        });
+                    }
+
+                })
+               
             })
-            .catch(error => {
-                console.log(error);
+            .catch(err => {
+                if (err.message == 'Firebase: Error (auth/email-already-in-use).') {
+                    Swal.fire({
+                        title: "email-already-in-use , Please Login",
+                        icon: "error",
+                        draggable: true
+                    });
+                    navigate('/login')
+                } else {
+                    toast.error(err.message)
+                }
+
             })
     }
+    const handleGoogleSignIn = () =>{
+        signInWithGoogle()
+        .then(result =>{
+          console.log(result.user);
+          const userData = {
+            userName: result.user?.displayName,
+            email: result.user?.email,
+            photo: result.user?.photoURL,
+            role: "customer"
+        }
+          Swal.fire("Login With Google success..!");
+          navigate('/');
+          axiosPublic.post(`/users/${res.user?.email}`, userData)
+          .then(res => {
+              navigate(from, { replace: true });
+          })
+
+
+  
+        })
+        .catch(error =>{
+          console.log(error);
+        })
+      }
 
     return (
         <div className="flex flex-col sm:flex-row items-center justify-center min-h-screen p-4 space-x-auto">
@@ -128,12 +171,16 @@ const Register = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full py-2 bg-red-500 font-bold text-yellow-300 rounded-xl hover:bg-slate-700 md:p-3 transition-all duration-300"
+                        className="w-full py-2 bg-orange-500 font-bold text-white rounded-xl hover:bg-slate-700 md:p-3 transition-all duration-300"
                     >
                         Register
                     </button>
 
                     <h1 className='text-center text-xl mt-4'>Already have an account? <Link to='/login'><span className='font-mono font-bold'>Login</span></Link></h1>
+                     <div onClick={handleGoogleSignIn} className="shadow-xl mx-auto flex items-center gap-3 p-5 border-2 rounded-xl hover:bg-orange-400 transition-all duration-800 hover:cursor-pointer justify-center w-full mb-4">
+                              <FaGoogle size={24} />
+                              <span className="font-bold text-xl">Login With Google</span>
+                            </div>
                 </form>
             </div>
         </div>

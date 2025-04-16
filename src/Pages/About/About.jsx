@@ -7,7 +7,7 @@ import PopularTour from './PopularTour/PopularTour';
 const About = () => {
     return (
         <div>
-            <Banner></Banner>
+            {/* <Banner></Banner> */}
             <AboutEurope></AboutEurope>
             <Video></Video>
             <PopularTour></PopularTour>

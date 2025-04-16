@@ -5,21 +5,33 @@ import lottieanimate from '../../assets/Animation - 1741286731198.json';
 import Lottie from 'lottie-react';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Login = () => {
 
-  const {signInUser,signInWithGoogle} = useContext(AuthContext);
+  const { signInUser, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
-  const handleGoogleSignIn = () =>{
+  const axiosPublic = useAxiosPublic()
+  const handleGoogleSignIn = () => {
     signInWithGoogle()
-    .then(result =>{
-      console.log(result.user);
-      Swal.fire("Login With Google success..!");
-      navigate('/');
-    })
-    .catch(error =>{
-      console.log(error);
-    })
+      .then(result => {
+        console.log(result.user);
+        const userData = {
+          userName: result.user?.displayName,
+          email: result.user?.email,
+          photo: result.user?.photoURL,
+          role: "customer"
+        }
+        Swal.fire("Login With Google success..!");
+        navigate('/');
+        axiosPublic.post(`/users/${res.user?.email}`, userData)
+          .then(res => {
+            navigate(from, { replace: true });
+          })
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
   const handleLogin = e => {
     e.preventDefault();
@@ -28,34 +40,34 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
 
-    signInUser(email,password)
-    .then(result =>{
-      console.log("sign in",result.user);
-      Swal.fire({
-        title: "Hurrahhh..!!Login Succesfull.!",
-        icon: "success",
-        draggable: true
-      });
-    })
-    .catch(error =>{
-      console.log(error);
-    })
+    signInUser(email, password)
+      .then(result => {
+        console.log("sign in", result.user);
+        Swal.fire({
+          title: "Login Succesfull.!",
+          icon: "success",
+          draggable: true
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
-  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
   return (
-    <div className="flex flex-col md:mx-52 md:flex-row items-center p-4 space-y-8 md:space-y-0 md:space-x-8">
+    <div className="flex flex-col md:mx-52 md:flex-row items-center justify-center h-screen p-4 space-y-8 md:space-y-0 md:space-x-8">
       {/* Lottie Animation */}
       <div className="w-full md:w-1/2 max-w-[400px] mb-8 md:mb-0">
         <Lottie animationData={lottieanimate} />
       </div>
 
       {/* Form Container */}
-      <div  className="w-full md:w-1/2 border-2 p-5 rounded-xl shadow-xl flex flex-col items-center">
+      <div className="w-full md:w-1/2 border-2 p-5 rounded-xl shadow-xl flex flex-col items-center">
         {/* Google Login */}
         <div onClick={handleGoogleSignIn} className="shadow-xl mx-auto flex items-center gap-3 p-5 border-2 rounded-xl hover:bg-orange-400 transition-all duration-800 hover:cursor-pointer justify-center w-full mb-4">
           <FaGoogle size={24} />
@@ -110,7 +122,7 @@ const Login = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-2 bg-red-500 font-bold text-yellow-300 rounded-xl hover:bg-slate-700 transition-all duration-300"
+            className="w-full py-2 bg-orange-500 font-bold text-white rounded-xl hover:bg-slate-700 transition-all duration-300"
           >
             Login
           </button>

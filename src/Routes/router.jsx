@@ -18,6 +18,7 @@ import Destination from "../Components/Destination/Destination";
 import DestinationForm from "../Components/DestinationForm/DestinationForm";
 import NavDestinate from "../Pages/NavDestinate/NavDestinate";
 import PrivateRoutes from "./PrivateRoutes";
+import Pakages from "../Pages/Packages/Pakages";
 
 export const router = createBrowserRouter([
     {
@@ -32,38 +33,65 @@ export const router = createBrowserRouter([
 
             {
                 path:'/destination',
-                element:<PrivateRoutes><NavDestinate></NavDestinate></PrivateRoutes>,
+                element:
+                // <PrivateRoutes>
+                <NavDestinate></NavDestinate>,
+                // </PrivateRoutes>,
                 loader:()=>fetch('http://localhost:3000/destination')
                
 
             },
             {
                 path:'/about',
-                element:<PrivateRoutes><About></About></PrivateRoutes>,
+                element:
+                // <PrivateRoutes>
+                    <About></About>
+                    // </PrivateRoutes>
+                    ,
             },
             {
                 path:'/cardone',
-                element:<PrivateRoutes><CardDetails></CardDetails></PrivateRoutes>
+                element:
+                // <PrivateRoutes>
+                    <CardDetails></CardDetails>
+                    // {/* </PrivateRoutes> */}
             },
             {
                 path:'/cardtwo',
-                element:<PrivateRoutes><DetailsTwo></DetailsTwo></PrivateRoutes>
+                element:
+                // <PrivateRoutes>
+                    <DetailsTwo></DetailsTwo>
+                    // {/* </PrivateRoutes> */}
             },
             {
                 path:'/cardthree',
-                element:<PrivateRoutes><DetailsThree></DetailsThree></PrivateRoutes>
+                element:
+                // <PrivateRoutes>
+                    <DetailsThree></DetailsThree>
+                    // </PrivateRoutes>
             },
             {
                 path:'/contact',
                 element:<ContactUs></ContactUs>
             },
             {
+                path:'/packages',
+                element:<Pakages></Pakages>
+            },
+            {
                 path:'/gallery',
-                element:<PrivateRoutes><Gallery></Gallery></PrivateRoutes>
+                element:
+                // <PrivateRoutes>
+                    <Gallery></Gallery>
+                // </PrivateRoutes>
             },
             {
                 path:'/tour/:id',
-                element:<PrivateRoutes><PackeagesDetails></PackeagesDetails></PrivateRoutes>,
+                element:
+                // <PrivateRoutes>
+                    <PackeagesDetails></PackeagesDetails>
+                    // </PrivateRoutes>
+                    ,
                 loader:({params})=>fetch(`http://localhost:3000/tour/${params.id}`)
             },
             {

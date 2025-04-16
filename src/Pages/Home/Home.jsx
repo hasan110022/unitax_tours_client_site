@@ -12,7 +12,7 @@ const Home = () => {
 
     return (
         <div>
-            <Banner></Banner>
+            {/* <Banner></Banner> */}
             <DestinationForm></DestinationForm>
             <Destination></Destination>
             <CheckoutPackeage></CheckoutPackeage>

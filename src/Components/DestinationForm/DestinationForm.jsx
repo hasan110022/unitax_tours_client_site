@@ -40,7 +40,7 @@ const DestinationForm = () => {
     };
 
     return (
-        <form className='max-w-screen-xl mx-auto' onSubmit={handleSubmit}>
+        <form className='max-w-screen-xl relative -top-20 mx-auto' onSubmit={handleSubmit}>
             <div className="max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 items-center gap-5 mx-auto border-2 bg-base-100 p-10">
                 <div className="flex-1">
                     <label className="block text-sm font-medium text-gray-700" htmlFor="destination">
