@@ -1,6 +1,19 @@
 import React from 'react';
+import usePackages from '../../Hooks/usePackages';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const Destination = () => {
+    const axiosPublic = useAxiosPublic()
+    const { data, isLoading, refetch } = useQuery({
+        queryKey: ['packages'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/packages`);
+            return Array.isArray(res.data) ? res.data.slice(0, 3) : []
+        }
+    })
+    console.log(data)
     return (
         <div className="p-5  mx-auto sm:p-4">
             {/* Header Section */}
@@ -12,30 +25,18 @@ const Destination = () => {
 
             {/* Destination Images */}
             <div className="flex flex-wrap gap-4 justify-center items-center mt-6 max-sm:gap-2">
-                {/* Image 1 */}
-                <div className="w-full md:w-[30%] sm:w-[48%] max-sm:w-full border border-gray-300 rounded-2xl overflow-hidden shadow-sm">
+              
+                {
+                    data?.map((item, index)=><Link to={`/packages/${item?._id}`} className="w-full md:w-[30%] sm:w-[48%] max-sm:w-full border h-[300px] border-gray-300 rounded-2xl shadow-sm">
                     <img
-                        src="https://i.ibb.co.com/yFktrWwh/Frame-478.png"
+                        src={item?.images[1]}
                         alt="Destination 1"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded-lg"
                     />
-                </div>
-                {/* Image 1 */}
-                <div className="w-full md:w-[30%] sm:w-[48%] max-sm:w-full border border-gray-300 rounded-2xl overflow-hidden shadow-sm">
-                    <img
-                        src="https://i.ibb.co.com/yFktrWwh/Frame-478.png"
-                        alt="Destination 1"
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-                {/* Image 1 */}
-                <div className="w-full md:w-[30%] sm:w-[48%] max-sm:w-full border border-gray-300 rounded-2xl overflow-hidden shadow-sm">
-                    <img
-                        src="https://i.ibb.co.com/yFktrWwh/Frame-478.png"
-                        alt="Destination 1"
-                        className="w-full h-full object-cover"
-                    />
-                </div>
+                    <p className='text-lg text-center font-semibold px-3 py-2'>{item?.destination}</p>
+                </Link>)
+                }
+      
               
               
             </div>

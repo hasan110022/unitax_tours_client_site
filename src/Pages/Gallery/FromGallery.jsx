@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
+import usePackages from '../../Hooks/usePackages';
 
 const FromGallery = () => {
     const [image, setImage] = useState(false);
+    const  [packages, isLoading, refetch] = usePackages()
 
     const handleClick = () => {
         setImage(!image);
     };
 
     return (
-        <div className='max-w-screen-lg max-sm:mt-96 max-sm:p-10  mx-auto border-2 border-white shadow-xl inset-0 p-5 h-auto rounded-xl'>
-            <div className='flex items-center justify-between'>
-                <h1 className='font-bold'>From the Gallery</h1>
-                <button onClick={handleClick} className='btn bg-orange-500'>
-                    View All Image
-                </button>
-            </div>
+        <div className=' w-[90%] m-auto
+          mx-auto border-2 border-white min-h-[500px] shadow-xl inset-0 p-5  rounded-xl'>
+            
 
             <div
-                className={`transition-opacity duration-1000 ${image ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                className={`transition-opacity duration-1000 grid grid-cols-4 gap-4`}
             >
-                {image && (
-                    <img
-                        className='mt-12 mx-auto flex items-center justify-center'
-                        src="https://i.ibb.co.com/sJwrkrLs/Screenshot-2025-03-07-155655.png"
+                
+                    {
+                        packages?.map((item, index)=><img
+                        className='mt-12 mx-auto flex items-center justify-center h-[300px] object-cover gap-4'
+                        src={item?.images[0]}
                         alt=""
-                    />
-                )}
+                    />)
+                    }
+             
             </div>
         </div>
     );

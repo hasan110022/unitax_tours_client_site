@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import PackeagesCard from './PackeagesCard';
 import usePackages from '../../Hooks/usePackages';
 import { FaCalendarAlt, FaRegTrashAlt, FaUserFriends } from 'react-icons/fa';
@@ -48,9 +48,9 @@ const TrendingPackeages = () => {
             <p className="text-gray-600 text-sm mt-2 mb-3 line-clamp-4">{tour.description}</p>
             <div className='flex items-center gap-8'>
       
-            <button className="bg-indigo-900 text-white px-4 py-2 rounded-md hover:bg-indigo-800 transition duration-300">
+            <Link to={`/packages/${tour?._id}`}><button className="bg-indigo-900 text-white px-4 py-2 rounded-md hover:bg-indigo-800 transition duration-300">
               Explore Now
-            </button>
+            </button></Link>
             <div>
             </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { FaCalendarCheck, FaMapMarkerAlt, FaPlaneDeparture } from 'react-icons/fa';
 
 const PopularTour = () => {
     // Initial state for loading percentages
@@ -61,8 +62,8 @@ const PopularTour = () => {
     const descriptions = ['VACATIONS', 'HONEYMOON', 'MUSICAL EVENTS'];
 
     return (
-        <div>
-            <div className="max-w-7xl justify-end max-sm:mt-96 px-4 sm:px-6 lg:px-8 py-12">
+        <div className='max-w-[1600px] w-[80%] m-auto'>
+            <div className=" justify-end max-sm:mt-96  py-12">
                 <div className="text-start mb-12 max-w-screen-lg">
                     <h1 className="uppercase text-yellow-300 font-bold text-lg">Trend</h1>
                     <h2 className="text-black font-bold text-3xl mt-2">Our Popular Tour Plans</h2>
@@ -98,8 +99,55 @@ const PopularTour = () => {
 
 
             </div>
-            <div className='mt-32 my-5 px-32 flex items-center justify-end'>
-                <img src="https://i.ibb.co.com/C3qnr4Hc/Group-1000001805.png" alt="" />
+            <div className='mt-32 my-5 gap-8 md:flex items-center justify-end'>
+                <img className='md:w-1/2' src="https://res.cloudinary.com/dk95heui2/image/upload/v1744977954/praveg-ghoghla-beach-resort-diu-1200x676_reqpm3.jpg" alt="" />
+                <div className='md:w-1/2'>
+                    <p className="text-sm font-semibold text-yellow-500">Fast & Easy</p>
+                    <h1 className="text-3xl font-extrabold text-gray-900 leading-tight mt-1 mb-6">Get Your Favourite <br /> Resort Bookings
+                    </h1>
+
+                    <div className="space-y-6">
+                        {/* Choose Destination */}
+                        <div className="flex items-start space-x-4">
+                            <div className="bg-yellow-400 p-3 rounded-md text-white text-xl">
+                                <FaMapMarkerAlt />
+                            </div>
+                            <div>
+                                <h2 className="font-bold text-gray-800">Choose Destination</h2>
+                                <p className="text-gray-600 text-sm">
+                                    Wander through charming streets, explore iconic landmarks, or relax by stunning coastlines.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Check Availability */}
+                        <div className="flex items-start space-x-4">
+                            <div className="bg-red-400 p-3 rounded-md text-white text-xl">
+                                <FaCalendarCheck />
+                            </div>
+                            <div>
+                                <h2 className="font-bold text-gray-800">Check Availability</h2>
+                                <p className="text-gray-600 text-sm">
+                                    Plan your perfect trip with ease! Check tour availability and secure your spot for an unforgettable European adventure. Book now before it’s too late!
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Let’s Go */}
+                        <div className="flex items-start space-x-4">
+                            <div className="bg-cyan-800 p-3 rounded-md text-white text-xl">
+                                <FaPlaneDeparture />
+                            </div>
+                            <div>
+                                <h2 className="font-bold text-gray-800">Let’s Go</h2>
+                                <p className="text-gray-600 text-sm">
+                                    Your next adventure starts now! Explore, experience, and enjoy the best of Europe. Book your tour today!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     );

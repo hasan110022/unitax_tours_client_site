@@ -5,7 +5,7 @@ import { FaUser, FaEnvelope, FaPhone, FaCommentDots, FaPaperPlane } from "react-
 const ContactUs = () => {
     return (
         <motion.div
-            className="bg-gradient-to-br from-purple-300 via-blue-300 to-indigo-400 min-h-screen flex flex-col"
+            className="bg-gradient-to-br pb-10 from-purple-300 via-blue-300 to-indigo-400 min-h-screen flex flex-col"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

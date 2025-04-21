@@ -23,6 +23,8 @@ import DashboardLayout from "../Layout/dashboardLayout";
 import AddPackages from "../Pages/Dashboard/SuperAdmin/AddPackages/AddPackages";
 import AllPackages from "../Pages/Dashboard/SuperAdmin/allPackages/AllPackages";
 import SuperAdminDashboard from "../Pages/Dashboard/SuperAdmin/SuparAdminDashboard";
+import PackageDetailsPage from "../Components/PackageDetailsPage/PackageDetailsPage";
+import AllBookings from "../Pages/Dashboard/SuperAdmin/AllBookings/AllBookings";
 
 export const router = createBrowserRouter([
     {
@@ -41,7 +43,7 @@ export const router = createBrowserRouter([
                 // <PrivateRoutes>
                 <NavDestinate></NavDestinate>,
                 // </PrivateRoutes>,
-                loader:()=>fetch('http://localhost:3000/destination')
+                // loader:()=>fetch('http://localhost:3000/destination')
                
 
             },
@@ -90,13 +92,14 @@ export const router = createBrowserRouter([
                 // </PrivateRoutes>
             },
             {
-                path:'/tour/:id',
+                path:'/packages/:id',
                 element:
                 // <PrivateRoutes>
-                    <PackeagesDetails></PackeagesDetails>
+                    // <PackeagesDetails></PackeagesDetails>
+                    <PackageDetailsPage></PackageDetailsPage>
                     // </PrivateRoutes>
                     ,
-                loader:({params})=>fetch(`http://localhost:3000/tour/${params.id}`)
+                // loader:({params})=>fetch(`http://localhost:3000/tour/${params.id}`)
             },
             {
                 path:'tab',
@@ -133,6 +136,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/allPackages',
                 element: <AllPackages></AllPackages>,
+            },
+            {
+                path: '/dashboard/allBookings',
+                element: <AllBookings></AllBookings>,
             },
         ]
     }

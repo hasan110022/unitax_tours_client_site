@@ -4,6 +4,7 @@ import { IoLocationSharp } from 'react-icons/io5';
 import usePackages from '../../../../Hooks/usePackages';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import TrendingPackeages from '../../../../Components/TrendingPackeages/TrendingPackeages';
 
 // const packages = [
 //   {
@@ -126,6 +127,7 @@ const AllPackages = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
+      {/* <TrendingPackeages></TrendingPackeages> */}
       <h2 className="text-3xl font-bold text-center mb-10 text-indigo-900">
         Our Trending Tour Packages
       </h2>

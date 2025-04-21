@@ -40,8 +40,7 @@ const CheckoutPackage = () => {
                 {/* Image Section */}
                 <div className="w-full lg:w-1/3 h-full flex items-center justify-center">
                     <img
-                        src="https://i.ibb.co/nMwmq4sj/Screenshot-2025-03-07-030329.png"
-                        alt="Travel Package"
+                        src={item?.images[0]}
                         className="rounded-xl shadow-lg w-full h-[350px] object-cover"
                     />
                 </div>
@@ -59,7 +58,7 @@ const CheckoutPackage = () => {
                         {/* Duration */}
                         <div className="flex items-center space-x-2">
                             <BsWatch className="text-red-700" size={20} />
-                            <span>{item?.departureTime}</span>
+                            <span>{item?.departureTime.slice(0,10)}.</span>
                         </div>
                         {/* Pax */}
                         <div className="flex items-center space-x-2">
@@ -69,7 +68,7 @@ const CheckoutPackage = () => {
                         {/* Location */}
                         <div className="flex items-center space-x-2">
                             <FaLocationDot className="text-red-700" size={20} />
-                            <span>{item?.destination}</span>
+                            <span>{typeof item?.destination === 'string' ? item.destination.slice(0, 10) : 'destination'}</span>
                         </div>
                     </div>
                 </div>
@@ -94,7 +93,7 @@ const CheckoutPackage = () => {
 
                     {/* Booking Button */}
                     <div className="text-center">
-                        <Link to='/cardthree'><button className="w-full px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg hover:scale-105 hover:shadow-lg transition transform duration-300">
+                        <Link to={`/packages/${item?._id}`}><button className="w-full px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg hover:scale-105 hover:shadow-lg transition transform duration-300">
                             Book Now
                         </button></Link>
                     </div>

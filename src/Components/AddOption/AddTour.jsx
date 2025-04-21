@@ -18,7 +18,7 @@ const AddTour = () => {
         console.log(newTour);
 
         // send data to the server
-        fetch('http://localhost:5000/tour',{
+        fetch('https://unitax-tour-server-main.vercel.app/tour',{
             method:'POST',
             headers:{
                 "content-type":"application/json"

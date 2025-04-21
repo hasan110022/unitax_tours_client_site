@@ -2,7 +2,7 @@ import React from 'react';
 
 const Video = () => {
     return (
-        <div className="relative w-[1600px] max-sm:w-auto mt-12 my-4  mx-auto max-sm:p-10  pb-[33.25%]">
+        <div className="relative w-[1600px] max-sm:w-auto mt-12 my-20  mx-auto max-sm:p-10  pb-[33.25%]">
             <iframe 
                 className="absolute top-0 left-0 w-full h-[500px]" 
                 src="https://www.youtube.com/embed/278IRQ6HSi4?si=Simh5jm09P5yKna9" 

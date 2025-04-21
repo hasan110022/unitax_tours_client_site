@@ -10,6 +10,7 @@ import { useState } from "react";
 
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import AllPackages from './allPackages/AllPackages';
+import TrendingPackeages from '../../../Components/TrendingPackeages/TrendingPackeages';
 
 
 const SuperAdminDashboard = () => {
@@ -177,7 +178,8 @@ const SuperAdminDashboard = () => {
                     </PieChart>
                 </ResponsiveContainer> */}
             </div>
-            <AllPackages></AllPackages>
+            {/* <AllPackages></AllPackages> */}
+            <TrendingPackeages></TrendingPackeages>
 
           
 

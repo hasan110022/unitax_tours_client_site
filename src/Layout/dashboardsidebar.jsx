@@ -44,6 +44,7 @@ const DashboardSideBar = () => {
 
                                 <NavLink to="/dashboard/allPackages" className=" py-2 rounded-lg" ><DashboardListItem text={"All Products"}></DashboardListItem></NavLink>
                                 <NavLink className=" py-2 rounded-lg" to="/dashboard/addPackages"><DashboardListItem text={"Add Products"}></DashboardListItem></NavLink>
+                                {/* <NavLink className=" py-2 rounded-lg" to="/dashboard/allBookings"><DashboardListItem text={"All Bookings"}></DashboardListItem></NavLink> */}
 
 
 

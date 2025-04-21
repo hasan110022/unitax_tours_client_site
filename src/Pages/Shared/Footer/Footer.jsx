@@ -3,8 +3,8 @@ import { FaFacebookMessenger, FaTwitter } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <footer className="footer  bg-[#181E4B] text-white max-sm:p-5 md:p-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <footer className="footer   bg-[#181E4B] text-white ">
+            <div className="grid max-w-[1600px] w-[90%] py-10 m-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {/* Left Section with Logo and Social Links */}
                 <nav className="flex flex-col items-center md:items-start">
                     <img
@@ -34,18 +34,18 @@ const Footer = () => {
                </div>
 
                 {/* Designations Section */}
-               <div>
-               <nav>
+               {/* <div> */}
+               {/* <nav>
                     <h6 className="footer-title text-lg font-semibold mb-3">Designations</h6>
                     <a className="link link-hover mb-2 block">Switzerland</a>
                     <a className="link link-hover mb-2 block">Amazon</a>
                     <a className="link link-hover mb-2 block">Las Vegas</a>
                     <a className="link link-hover mb-2 block">Toronto</a>
-                </nav>
-               </div>
+                </nav> */}
+               {/* </div> */}
 
                 {/* Newsletter Form Section */}
-                <form className="flex flex-col items-center md:items-start">
+                <form className="flex flex-col items-center justify-center md:items-start">
                     <h6 className="footer-title text-lg font-semibold mb-3">Join Our NewsLetter</h6>
                     <fieldset className="form-control mb-4 w-80">
                         <label className="label">
